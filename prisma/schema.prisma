@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./jokes.db"
+}
+
+model Joke {
+  id    Int     @id @default(autoincrement())
+  setup String?
+  punch String?
+  lang  String?
+}

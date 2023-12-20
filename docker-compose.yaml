@@ -1,0 +1,8 @@
+services:
+  app:
+    image: jokes_app
+    ports:
+      - 6969:3000
+    working_dir: /app
+    volumes:
+      - ./prisma:/app/prisma
