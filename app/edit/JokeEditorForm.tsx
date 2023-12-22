@@ -9,7 +9,7 @@ export default async function JokeEditorForm() {
       punch: formData.get("punchline"),
       lang: formData.get("language"),
     };
-    const ret = await fetch("/api/add", {
+    const ret = await fetch("/jokes/api/add", {
       method: "PUT",
       body: JSON.stringify(body),
       headers: {
