@@ -10,7 +10,7 @@ export default async function JokeEditorForm() {
       lang: formData.get("language"),
     };
     const ret = await fetch("/jokes/api/add", {
-      method: "PUT",
+      method: "POST",
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
@@ -18,6 +18,7 @@ export default async function JokeEditorForm() {
     });
     //@ts-ignore
     e.target.reset();
+    return ret;
   };
 
   return (

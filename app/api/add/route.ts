@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
-export async function PUT(req: Request) {
+export async function POST(req: Request) {
   const { setup, punch, lang } = await req.json();
   const newJoke = await prisma.joke.create({
     data: {
@@ -10,5 +9,5 @@ export async function PUT(req: Request) {
       lang,
     },
   });
-  return NextResponse.json(newJoke);
+  return new Response(JSON.stringify(newJoke));
 }

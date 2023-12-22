@@ -3,9 +3,9 @@ const nextConfig = {};
 
 module.exports = {
   ...nextConfig,
-//  basePath: "/jokes",
+  //  basePath: "/jokes",
   assetPrefix: "/jokes",
-//  publicRuntimeConfig: {
-//    basePath: "/jokes",
-//  },
+  //  publicRuntimeConfig: {
+  //    basePath: "/jokes",
+  //  },
 };
