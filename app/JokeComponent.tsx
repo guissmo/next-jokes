@@ -19,49 +19,51 @@ export default function JokeComponent({ lang }: { lang?: "FR" | "EN" | "TL" }) {
   }, []);
 
   async function getJoke() {
-    setJoke(null);
     const res = await fetch(lang ? `/api/joke/${lang}` : "/api/joke");
-    const joke = await res.json();
-    if (joke.setup && joke.punch && joke.lang)
-      setJoke({ setup: joke.setup, punch: joke.punch, lang: joke.lang });
+    const newJoke = await res.json();
+    if (newJoke.setup && newJoke.punch && newJoke.lang)
+      setJoke({
+        setup: newJoke.setup,
+        punch: newJoke.punch,
+        lang: newJoke.lang,
+      });
   }
 
   return (
-    <div className={classes.cardOuter}>
-      <div className={classes.cardInner}>
-        <span className={classes.setup}>
-          <span>{joke ? joke.setup : ""}</span>
-        </span>
-        {showPunchline ? (
-          <>
-            <span className={`${classes.punchline} ${classes.revealed}`}>
-              <span>{joke ? joke.punch : ""}</span>
-              <span
-                onClick={() => {
-                  setShowPunchline(false);
-                  getJoke();
-                }}
-                className={classes.newJoke}
-              >
-                {lang == "FR" ? "Encore une" : ""}
-                {lang == "EN" ? "Another one" : ""}
-                {lang == "TL" ? "Isa pa" : ""}
-              </span>
+    <div className={classes.cardInner}>
+      <span className={classes.setup}>
+        <span>{joke ? joke.setup : "Loading..."}</span>
+      </span>
+      {showPunchline ? (
+        <>
+          <span className={`${classes.punchline} ${classes.revealed}`}>
+            <span>{joke ? joke.punch : ""}</span>
+            <span
+              onClick={() => {
+                setShowPunchline(false);
+                getJoke();
+              }}
+              className={classes.newJoke}
+            >
+              {lang == "FR" ? "Encore une" : ""}
+              {lang == "EN" ? "Another one" : ""}
+              {lang == "TL" ? "Isa pa" : ""}
+              {!lang ? "Another one" : ""}
             </span>
-          </>
-        ) : (
-          <>
-            <span className={classes.punchline}>
-              <span
-                className={classes.revealPunchline}
-                onClick={() => {
-                  setShowPunchline(true);
-                }}
-              ></span>
-            </span>
-          </>
-        )}
-      </div>
+          </span>
+        </>
+      ) : (
+        <>
+          <span className={classes.punchline}>
+            <span
+              className={classes.revealPunchline}
+              onClick={() => {
+                setShowPunchline(true);
+              }}
+            ></span>
+          </span>
+        </>
+      )}
     </div>
   );
 }

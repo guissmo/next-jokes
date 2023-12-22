@@ -3,8 +3,10 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1em;
 }
 
 .cardInner {
@@ -87,4 +89,38 @@
     calc(100% - 5px * sqrt(2)) 0,
     100% 0
   );
+}
+
+.langButton {
+  background-color: white;
+  border: 5px solid black;
+  color: black;
+  text-decoration: none;
+  border-width: 5px 10px 10px 5px;
+  padding: 10px;
+  font-size: 1rem;
+  user-select: none;
+  cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    0 calc(100% - 5px * sqrt(2)),
+    calc(5px * sqrt(2)) 100%,
+    100% 100%,
+    100% calc(5px * sqrt(2)),
+    calc(100% - 5px * sqrt(2)) 0,
+    100% 0
+  );
+}
+
+.langButton:hover {
+  background-color: yellowgreen;
+  opacity: 1;
+}
+
+.langButtonUnselected {
+  opacity: 0.6;
+}
+
+.langButtonSelected {
+  background-color: white;
 }
