@@ -21,7 +21,7 @@ export default function JokeComponent({ lang }: { lang?: "FR" | "EN" | "TL" }) {
   async function getJoke() {
     setJoke(null);
     const res = await fetch(
-      lang ? `/api/joke/${lang}` : "/api/joke"
+      lang ? `/jokes/api/joke/${lang}` : "/jokes/api/joke"
     );
     const joke = await res.json();
     if (joke.setup && joke.punch && joke.lang)
