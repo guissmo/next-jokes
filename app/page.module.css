@@ -13,7 +13,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 5fr 7fr;
+  grid-template-rows: 6fr 8fr;
   gap: 10px;
   text-align: center;
   height: clamp(400px, 80%, 400px);
@@ -30,14 +30,7 @@
     calc(100% - 10px * sqrt(2)) 0,
     100% 0
   );
-}
-
-@media (orientation: portrait) {
-  /* Styles to apply when the viewport is in portrait orientation */
-  .cardInner {
-    height: 80%;
-    width: 80%;
-  }
+  overflow-y: auto;
 }
 
 .setup {
@@ -45,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  font-size: 2rem;
+  font-size: clamp(0.1rem, 10vh, 2rem);
   font-weight: 100;
   margin: 20px;
 }
@@ -57,8 +50,25 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  font-size: 2rem;
   font-weight: bolder;
+}
+
+.setup,
+.punchline {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
+
+@media (orientation: portrait) {
+  /* Styles to apply when the viewport is in portrait orientation */
+  .cardInner {
+    height: 80%;
+    width: 80%;
+  }
+
+  .setup,
+  .punchline {
+    font-size: clamp(1rem, 4vh, 2rem);
+  }
 }
 
 .revealed {
