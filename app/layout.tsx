@@ -11,6 +11,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Corninator | Funny Jokes",
   description:
     "Ever needed funny jokes to make you look cool at parties? Search no more!",
